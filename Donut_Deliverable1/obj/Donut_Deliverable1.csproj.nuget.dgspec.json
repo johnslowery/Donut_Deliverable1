@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
+    "C:\\Users\\Jack\\Source\\Repos\\Donut_Deliverable1_Git\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
+    "C:\\Users\\Jack\\Source\\Repos\\Donut_Deliverable1_Git\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "projectUniqueName": "C:\\Users\\Jack\\Source\\Repos\\Donut_Deliverable1_Git\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
         "projectName": "Donut_Deliverable1",
-        "projectPath": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "projectPath": "C:\\Users\\Jack\\Source\\Repos\\Donut_Deliverable1_Git\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
         "packagesPath": "C:\\Users\\Jack\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\obj\\",
+        "outputPath": "C:\\Users\\Jack\\Source\\Repos\\Donut_Deliverable1_Git\\Donut_Deliverable1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jack\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -37,6 +37,42 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
