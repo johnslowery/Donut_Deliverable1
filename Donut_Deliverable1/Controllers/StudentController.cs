@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Donut_Deliverable1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -48,6 +49,27 @@ namespace Donut_Deliverable1.Controllers
                 }
             }
             return View(await students.ToListAsync());
+        }
+
+        // GET: StudentController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: StudentController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
