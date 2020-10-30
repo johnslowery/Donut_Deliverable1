@@ -14,24 +14,11 @@ namespace Donut_Deliverable1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Verification(string nNumber)
-        {
-            return View();
-        }
-
-        public IActionResult Success()
-        {
-            return View();
-        }
-
-
-/*
-        [HttpPost]
         public IActionResult CheckIn(string nNumber, DateTime GetDate)
         {
             //Still needs validation that user exists and to add to a database
             GetDate = DateTime.Now;
             return Content($"Successful Check-in, {nNumber} \nCheck in Time:{GetDate}");
-        }*/
+        }
     }
 }

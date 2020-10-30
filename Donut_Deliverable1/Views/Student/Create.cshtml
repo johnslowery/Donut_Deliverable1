@@ -12,35 +12,31 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="nNumber" class="control-label"></label>
-                <input asp-for="nNumber" class="form-control" />
-                <span asp-validation-for="nNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="firstName" class="control-label"></label>
+                <label asp-for="firstName" class="control-label">First Name: </label>
                 <input asp-for="firstName" class="form-control" />
                 <span asp-validation-for="firstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="lastName" class="control-label"></label>
+                <label asp-for="lastName" class="control-label">Last Name: </label>
                 <input asp-for="lastName" class="form-control" />
                 <span asp-validation-for="lastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="scholarship" class="control-label"></label>
+                <label asp-for="nNumber" class="control-label">UNF nNumber: </label>
+                <input asp-for="nNumber" class="form-control" />
+                <span asp-validation-for="nNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="birthDate" class="control-label">Birth Date: </label>
+                <input asp-for="birthDate" class="form-control" type="date" />
+                <span asp-validation-for="birthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="scholarship" class="control-label">Scholarship Source: </label>
                 <input asp-for="scholarship" class="form-control" />
                 <span asp-validation-for="scholarship" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="currentYear" class="control-label"></label>
-                <input asp-for="currentYear" class="form-control" />
-                <span asp-validation-for="currentYear" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="age" class="control-label"></label>
-                <input asp-for="age" class="form-control" />
-                <span asp-validation-for="age" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -50,6 +46,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="StudentSearch">Back to List</a>
 </div>
 

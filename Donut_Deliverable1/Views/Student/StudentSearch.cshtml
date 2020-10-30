@@ -3,81 +3,45 @@
     ViewData["Title"] = "StudentSearch";
 }
 
-<h1>StudentSearch</h1><br />
 
+<center><h1>Search Through Students</h1></center>
+<br />
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <style>
-    table, th, td{
-        text-align:center;
+    table, th, td {
+        text-align: center;
         border: 1px solid black;
     }
 </style>
 
-<form asp-controller='Student' asp-action='StudentSearch' method='get'>
-    <p>
-        Search Term: <input type='text' name='SearchString' /><br />
-        Search Type: <br />
-        <input type="radio" id="nnumber" name="SearchType" value="nnumber">
-        <label for="nnumber">N Number: </label><br>
-        <input type="radio" id="fname" name="SearchType" value="fname">
-        <label for="fname">First Name: </label><br>
-        <input type="radio" id="lname" name="SearchType" value="lname">
-        <label for="lname">Last Name: </label><br>
-        <input type="radio" id="scholarship" name="SearchType" value="scholarship">
-        <label for="scholarship">Scholarship: </label><br>
-        <input type="radio" id="year" name="SearchType" value="year">
-        <label for="year">Current Year: </label><br>
-        <input type="radio" id="age" name="SearchType" value="age">
-        <label for="age">Age: </label><br>
-        <input type='submit' value='Search' />
-    </p>
-</form>
-
-@foreach (var item in Model)
-{
-    <table>
+<center>
+    <table id="student_table">
         <thead>
             <tr>
                 <th>
-                    N Number
+                    Name
                 </th>
                 <th>
-                    First Name
+                    nNumber
                 </th>
                 <th>
-                    Last Name
+                    Birth Date
                 </th>
                 <th>
-                    Scholarship Source
-                </th>
-                <th>
-                    Current Year
-                </th>
-                <th>
-                    Age
+                    Funding Source(s)
                 </th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.firstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.lastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.scholarship)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.currentYear)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.age)
-                </td>
-            </tr>
-        </tbody>
     </table>
+</center>
+
+<br />
+<center><a asp-action="Create">Add a Student</a></center>
+<center><a asp-action="StudentView">View Template Student Page</a></center>
+
+@section Scripts
+{
+<script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+<script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/js/student_table.js"></script>
 }
