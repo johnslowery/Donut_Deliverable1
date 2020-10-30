@@ -9172,11 +9172,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "projectUniqueName": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
       "projectName": "Donut_Deliverable1",
-      "projectPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "projectPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
       "packagesPath": "C:\\Users\\Jackie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\obj\\",
+      "outputPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9259,7 +9259,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }
