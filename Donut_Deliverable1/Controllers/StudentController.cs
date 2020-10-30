@@ -40,13 +40,13 @@ namespace Donut_Deliverable1.Controllers
                 }else if (searchType == "scholarship")
                 {
                     students = students.Where(s => s.scholarship.Contains(searchString));
-                }else if (searchType == "year")
+                }/*else if (searchType == "year")
                 {
                     students = students.Where(s => s.currentYear.Contains(searchString));
                 }else if (searchType == "age")
                 {
                     students = students.Where(s => s.age.Contains(searchString));
-                }
+                }*/
             }
             return View(await students.ToListAsync());
         }

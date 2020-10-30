@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<style>
+    table, th, td {
+        text-align: center;
+        border: 1px solid black;
+    }
+</style>
+
+<div class="container">
+    <div class="float-xl-left">
+        <input type="date" />
+        <table>
+            <thead>
+                <tr>
+                    <th>N Number</th>
+                    <th>Name</th>
+                    <th>Check In Status</th>
+                    <th>Check Out Status</th>
+                    <th>Profile</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.nNumber</td>
+                        <td>@student.firstName @student.lastName</td>
+                        <td>
+                            <select>
+                                <option>test</option>
+                                <option>hehe</option>
+                                <option>please don't yell at me</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select>
+                                <option>test</option>
+                                <option>hehe</option>
+                                <option>please don't yell at me</option>
+                            </select>
+                        </td>
+                        <td><button></button></td>
+                        <td><input type="text"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="float-sm-right">
+        <form asp-action="Report">
+            <button>Weekly Report</button>
+        </form>
+    </div>
+</div>

@@ -9166,23 +9166,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jackie\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\crimc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "projectUniqueName": "C:\\Users\\crimc\\Desktop\\Stuff for school\\Donut Deliverables\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
       "projectName": "Donut_Deliverable1",
-      "projectPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
-      "packagesPath": "C:\\Users\\Jackie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable1_v2\\Donut_Deliverable1\\obj\\",
+      "projectPath": "C:\\Users\\crimc\\Desktop\\Stuff for school\\Donut Deliverables\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "packagesPath": "C:\\Users\\crimc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\crimc\\Desktop\\Stuff for school\\Donut Deliverables\\Donut_Deliverable1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jackie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\crimc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9259,7 +9255,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
