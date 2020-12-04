@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
+    "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
-      "version": "1.0.0",
+    "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
+      "version": "0.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "projectUniqueName": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
         "projectName": "Donut_Deliverable1",
-        "projectPath": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
-        "packagesPath": "C:\\Users\\Jack\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jack\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1\\obj\\",
+        "projectPath": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "packagesPath": "C:\\Users\\power\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jack\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\power\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -42,31 +42,39 @@
               "target": "Package",
               "version": "[6.4.4, )"
             },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "target": "Package",
-              "version": "[3.1.8, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
