@@ -26,7 +26,7 @@ namespace Donut_Deliverable1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentDBConnection")));
+            services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentDbConnection")));
             services.AddTransient<IStudentRepository, EFStudentRepository>();
             services.AddControllersWithViews();
         }

@@ -12,7 +12,6 @@ namespace Donut_Deliverable1.Models
         public String firstName { get; set; }
         public String lastName { get; set; }
         public String scholarship { get; set; }
-        public String currentYear { get; set; }
-        public String age { get; set; }
+        public String birthDate { get; set; }
     }
 }

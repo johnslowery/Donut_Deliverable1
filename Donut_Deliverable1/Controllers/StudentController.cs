@@ -23,32 +23,9 @@ namespace Donut_Deliverable1.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> StudentSearch(string searchString, string searchType)
+        public IActionResult StudentSearch()
         {
-            var students = from v in context.Students select v;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                if(searchType == "nnumber")
-                {
-                    students = students.Where(s => s.nNumber.Contains(searchString));
-                }else if (searchType == "fname")
-                {
-                    students = students.Where(s => s.firstName.Contains(searchString));
-                }else if (searchType == "lname")
-                {
-                    students = students.Where(s => s.lastName.Contains(searchString));
-                }else if (searchType == "scholarship")
-                {
-                    students = students.Where(s => s.scholarship.Contains(searchString));
-                }else if (searchType == "year")
-                {
-                    students = students.Where(s => s.currentYear.Contains(searchString));
-                }else if (searchType == "age")
-                {
-                    students = students.Where(s => s.age.Contains(searchString));
-                }
-            }
-            return View(await students.ToListAsync());
+            return View();
         }
 
         // GET: StudentController/Create

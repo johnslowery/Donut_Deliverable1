@@ -11,10 +11,29 @@ namespace Donut_Deliverable1.Controllers
 {
     public class AdminController : Controller
     {
+        private IStudentRepository repository;
+        private readonly AppDbContext context;
 
+        public AdminController(AppDbContext context, IStudentRepository repo)
+        {
+            this.context = context;
+            repository = repo;
+        }
         public ActionResult Login()
         {
             return View();
+        }
+
+        public ActionResult Dashboard()
+        {
+            var students = context.Students;
+            return View(students);
+        }
+
+        public ActionResult Report()
+        {
+            var students = context.Students;
+            return View(students);
         }
     }
 }
