@@ -1,21 +1,17 @@
-﻿@model Donut_Deliverable1.Controllers.AttendanceController
-
-@{
+﻿@{
     ViewData["Title"] = "CheckIn";
 }
 
-<h1>CheckIn</h1>
+<div class="jumbotron vertical-center">
 
-<h4>Student</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CheckIn" asp-controller="Attendance" method="Post">
-            <label for="nNumber">Please enter your Nnumber: </label>
-            <input type="text" id="nNumber" placeholder="n11111111" name="nNumber" />
+    <div class="text-center">
+        <h1>Check-In</h1>
+
+
+        <form asp-action="Verification" asp-controller="Attendance" method="Post">
+            <label for="nNumber" style="font-size:30px">Please enter your N-number: </label>
+            <input type="text" id="nNumber" placeholder="n11111111" name="nNumber" required />
             <input type="submit" />
         </form>
-
     </div>
 </div>
-
