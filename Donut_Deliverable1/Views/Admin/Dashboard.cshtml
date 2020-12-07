@@ -3,57 +3,61 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<style>
-    table, th, td {
-        text-align: center;
-        border: 1px solid black;
-    }
-</style>
 
 <div class="container">
-    <div class="float-xl-left">
-        <input type="date" />
-        <table>
-            <thead>
-                <tr>
-                    <th>N Number</th>
-                    <th>Name</th>
-                    <th>Check In Status</th>
-                    <th>Check Out Status</th>
-                    <th>Profile</th>
-                    <th>Comments</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var student in Model)
-                {
-                    <tr>
-                        <td>@student.nNumber</td>
-                        <td>@student.firstName @student.lastName</td>
-                        <td>
-                            <select>
-                                <option>test</option>
-                                <option>hehe</option>
-                                <option>please don't yell at me</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select>
-                                <option>test</option>
-                                <option>present</option>
-                                <option>absent</option>
-                            </select>
-                        </td>
-                        <td><button></button></td>
-                        <td><input type="text"></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    <div class="row p-2 justify-content-end" >
+        <div class="col-md-2 ml-md-auto">
+            <input type="date" />
+        </div>
+        <div class="col-md-2 ml-md-auto">
+            <form asp-action="Report">
+                <button class="btn btn-warning">Weekly Report</button>
+            </form>
+        </div>
     </div>
-    <div class="float-sm-right">
-        <form asp-action="Report">
-            <button>Weekly Report</button>
-        </form>
+    <div class="row">
+        <div class="col-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">N Number</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Check In Status</th>
+                        <th scope="col">Check Out Status</th>
+                        <th scope="col">Profile</th>
+                        <th scope="col">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model)
+                    {
+                        <tr>
+                            <td>@student.nNumber</td>
+                            <td>@student.firstName @student.lastName</td>
+                            <td>
+                                <select class="browser-default custom-select">
+                                    <option>On Time</option>
+                                    <option>Late - Excused</option>
+                                    <option>Absent - Excused</option>
+                                    <option>Late - Not Excused</option>
+                                    <option>Absent - Not Excused</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="browser-default custom-select">
+                                    <option>On Time</option>
+                                    <option>Late - Excused</option>
+                                    <option>Absent - Excused</option>
+                                    <option>Late - Not Excused</option>
+                                    <option>Absent - Not Excused</option>
+                                </select>
+                            </td>
+                            <td class="align-middle"><button class="btn btn-info btn-lg btn-block "></button></td>
+                            <td><input type="text"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
