@@ -30,15 +30,13 @@ namespace Donut_Deliverable1.Controllers
                 if (x.Type == "Role")
                 {
                     role = x.Value;
-                    Console.WriteLine(x.Value);
                 }
             }
 
             if (role == "Admin")
             {
                 ViewData["Role"] = "Admin";
-                Console.WriteLine(ViewBag.Role);
-                return RedirectToAction("Privacy");
+                return RedirectToAction("Dashboard", "Admin");
             }
             else if (role == "Attendance")
             {
