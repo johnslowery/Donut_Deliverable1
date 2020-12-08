@@ -19,7 +19,10 @@
         <thead>
             <tr>
                 <th>
-                    Name
+                    First Name
+                </th>
+                <th>
+                    Last Name
                 </th>
                 <th>
                     nNumber
@@ -32,16 +35,27 @@
                 </th>
             </tr>
         </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td><a href="StudentView/@student.Id">@student.firstName</a></td>
+                    <td>@student.lastName</td>
+                    <td>@student.nNumber</td>
+                    <td>@student.birthDate</td>
+                    <td>@student.scholarship</td>
+                </tr>
+            }
+        </tbody>
     </table>
 </center>
 
 <br />
 <center><a asp-action="Create">Add a Student</a></center>
-<center><a asp-action="StudentView">View Template Student Page</a></center>
 
 @section Scripts
 {
-<script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-<script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="~/js/student_table.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/student_table.js"></script>
 }

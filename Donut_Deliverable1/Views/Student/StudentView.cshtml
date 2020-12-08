@@ -1,19 +1,13 @@
-﻿
+﻿@model Student
 @{
     ViewData["Title"] = "StudentView";
 }
 
-<!--Template Page for Seeing Student Information-->
+<h1>@Model.firstName @Model.lastName</h1>
 
-<h1>First Name Last Name</h1>
-
-<h4>First Name:</h4> 
-<br />
-<h4>Last Name:</h4>
-<br />
-<h4>UNF nNumber:</h4>
-<br />
-<h4>Birth Date:</h4>
-<br />
-<h4>Scholarship Source:</h4>
-<br />
+<h2>n Number</h2>
+<p>@Model.nNumber</p>
+<h2>Birth Date</h2>
+<p>@Model.birthDate</p>
+<h2>Scholarship Source</h2>
+<p>@Model.scholarship</p>
