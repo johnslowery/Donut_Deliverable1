@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
+    "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
+    "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj": {
       "version": "0.2.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "projectUniqueName": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
         "projectName": "Donut_Deliverable1",
-        "projectPath": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
-        "packagesPath": "C:\\Users\\power\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\power\\source\\repos\\Donut_Deliverable1\\Donut_Deliverable1\\obj\\",
+        "projectPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+        "packagesPath": "C:\\Users\\Jackie\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\power\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jackie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,8 +66,6 @@
               "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.9, )"
             },
@@ -83,10 +84,6 @@
             "System.Linq.Dynamic.Core": {
               "target": "Package",
               "version": "[1.2.5, )"
-            },
-            "jquery.datatables": {
-              "target": "Package",
-              "version": "[1.10.15, )"
             }
           },
           "imports": [
@@ -107,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

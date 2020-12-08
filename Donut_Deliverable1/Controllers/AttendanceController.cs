@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Donut_Deliverable1.Controllers
@@ -24,5 +23,15 @@ namespace Donut_Deliverable1.Controllers
         {
             return View();
         }
+
+
+/*
+        [HttpPost]
+        public IActionResult CheckIn(string nNumber, DateTime GetDate)
+        {
+            //Still needs validation that user exists and to add to a database
+            GetDate = DateTime.Now;
+            return Content($"Successful Check-in, {nNumber} \nCheck in Time:{GetDate}");
+        }*/
     }
 }
