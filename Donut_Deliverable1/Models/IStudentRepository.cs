@@ -8,5 +8,6 @@ namespace Donut_Deliverable1.Models
     public interface IStudentRepository
     {
         IEnumerable<Student> Students { get; }
+        Student GetStudent(int Id);
     }
 }
