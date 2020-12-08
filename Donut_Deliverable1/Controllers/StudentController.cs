@@ -21,11 +21,16 @@ namespace Donut_Deliverable1.Controllers
         }
         public IActionResult StudentView()
         {
-            return View();
+            string absolutepath = HttpContext.Request.Path;
+            var lastPart = absolutepath.Split('/').Last();
+            int studentId = Int32.Parse(lastPart);
+            var students = repository.GetStudent(studentId);
+            return View(students);
         }
         public IActionResult StudentSearch()
         {
-            return View();
+            var students = repository.Students.ToList();
+            return View(students);
         }
 
         // GET: StudentController/Create
@@ -37,16 +42,11 @@ namespace Donut_Deliverable1.Controllers
         // POST: StudentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Student student)
         {
-            try
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
+            context.Add(student);
+            context.SaveChanges();
+            return RedirectToAction("StudentSearch");
         }
     }
 }
