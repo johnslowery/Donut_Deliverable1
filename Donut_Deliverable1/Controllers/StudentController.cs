@@ -48,5 +48,24 @@ namespace Donut_Deliverable1.Controllers
             context.SaveChanges();
             return RedirectToAction("StudentSearch");
         }
+
+        public ActionResult Edit()
+        {
+            string absolutepath = HttpContext.Request.Path;
+            var lastPart = absolutepath.Split('/').Last();
+            int studentId = Int32.Parse(lastPart);
+            var students = repository.GetStudent(studentId);
+            return View(students);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Student student)
+        {
+            context.Update(student);
+            context.SaveChanges();
+            return RedirectToAction("StudentSearch");
+        }
+
     }
 }
