@@ -12,6 +12,22 @@ a {
   color: #0366d6;
 }
 
+.arc-prime-font{
+    font-family: "ITC Stone Sans", sans-serif;
+}
+
+.arc-header-font {
+    font-family: abril, sans-serif;
+}
+
+#arc-orange nav {
+    background-color: #ea7125;
+}
+
+#arc-orange-text{
+    color: #ea7125;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

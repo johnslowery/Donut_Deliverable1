@@ -11,11 +11,11 @@
         </li>
         <li class="nav-item">
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
-                <button id="logout" type="submit" class="nav-link btn btn-link text-white">Logout</button>
+                <button id="logout" type="submit" class="nav-link text-dark bg-light rounded border border-warning mr-md-2">Logout</button>
             </form>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark bg-light rounded border border-warning mr-md-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
     }
     else if (User.IsInRole("attendance"))
@@ -25,10 +25,10 @@
     else
     {
         <li class="nav-item">
-            <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-dark bg-light rounded border border-warning mr-md-2" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark bg-light rounded border border-warning mr-md-2" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
     }
 
