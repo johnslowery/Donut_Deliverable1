@@ -11,7 +11,14 @@ namespace Donut_Deliverable1.Controllers
     {
         public IActionResult CheckIn()
         {
-            return View();
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
         }
 
         [HttpPost]

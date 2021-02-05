@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ARC Jacksonville Attendance System</title>
+    <title>@ViewData["Title"] - Arc Jacksonville Attendance System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -13,6 +18,7 @@
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
                 <img src="/Images/white_Arc_Logo.png" alt="Arc Logo" height="100" width="150" /><br />
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,15 +26,22 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item mr-md-2">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (User.IsInRole("admin")) {
+                                <li class="nav-item mr-md-2">
                             <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
                         </li>
                         <li class="nav-item mr-md-2">
                             <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Student Profile Management</a>
                         </li>
                         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>*@
+                            }
+                        }
+
+                @*<li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>*@
                     </ul>
                 </div>
             </div>
@@ -39,10 +52,10 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted bg-dark">
-        <div class="container text-light">
-            &copy; 2020 - ARC Jacksonville Attendance System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="border-top footer text-muted">
+        <div class="container text-white" style="background-color:#484847">
+            &copy; The Arc Jacksonville is a nonprofit 501(c)(3) tax-exempt organization.
+            <p>EIN 59-6209603</p>
 
         </div>
     </footer>
