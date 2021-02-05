@@ -9402,23 +9402,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jackie\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Jshra\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "0.2.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "projectUniqueName": "C:\\Users\\Jshra\\Source\\Repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
       "projectName": "Donut_Deliverable1",
-      "projectPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
-      "packagesPath": "C:\\Users\\Jackie\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jackie\\Source\\Repos\\Donut_Deliverable2\\Donut_Deliverable1\\obj\\",
+      "projectPath": "C:\\Users\\Jshra\\Source\\Repos\\Donut_Deliverable1\\Donut_Deliverable1\\Donut_Deliverable1.csproj",
+      "packagesPath": "C:\\Users\\Jshra\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jshra\\Source\\Repos\\Donut_Deliverable1\\Donut_Deliverable1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Jackie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jshra\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9430,6 +9426,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9441,6 +9438,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "EntityFramework": {
             "target": "Package",
@@ -9505,7 +9503,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
