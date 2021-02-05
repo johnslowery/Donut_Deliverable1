@@ -3,6 +3,7 @@
     ViewData["Title"] = "Weekly Report";
 }
 
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 <div class="container ">
     <div class="row p-2 justify-content-start">
         <div class="col-4">
@@ -16,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col-auto">
-            <table class="table">
+            <table id="dashboard_table">
                 <thead>
                     <tr>
                         <th scope="col">N Number</th>
@@ -32,9 +33,14 @@
                         <tr>
                             <td>@student.nNumber</td>
                             <td>@student.firstName @student.lastName</td>
-                            <td class="align-middle">0</td>
-                            <td class="align-middle">0</td>
-                            <td class="align-middle"><button class="btn btn-info btn-lg btn-block "></button></td>
+                            <td class="align-middle" style="text-align: center">0</td>
+                            <td class="align-middle" style="text-align: center">0</td>
+                            <td class="align-middle">
+                                <a href='@Url.Action("StudentView", "Student")\@student.Id'>
+                                    <input type='button' class="btn btn-info btn-sm btn-block" value="To Profile" />
+                                </a>
+                            </td>
+
                         </tr>
                     }
                 </tbody>
@@ -44,3 +50,9 @@
 
 </div>
 
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/dashboard_table.js"></script>
+}
