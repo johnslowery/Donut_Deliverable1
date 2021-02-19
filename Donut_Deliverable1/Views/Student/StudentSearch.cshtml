@@ -12,6 +12,14 @@
         text-align: center;
         border: 1px solid black;
     }
+
+    h1, h2 {
+        font-family: Abril;
+    }
+
+    th, td {
+        font-family: "ITC Stone Sans";
+    }
 </style>
 
 <center>
@@ -33,18 +41,22 @@
                 <th>
                     Funding Source(s)
                 </th>
+                <th>
+                    Edit
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var student in Model)
             {
-                <tr>
-                    <td><a href="StudentView/@student.Id">@student.firstName</a></td>
-                    <td>@student.lastName</td>
-                    <td>@student.nNumber</td>
-                    <td>@student.birthDate</td>
-                    <td>@student.scholarship</td>
-                </tr>
+            <tr>
+                <td><a href="StudentView/@student.Id">@student.firstName</a></td>
+                <td>@student.lastName</td>
+                <td>@student.nNumber</td>
+                <td>@student.birthDate</td>
+                <td>@student.scholarship</td>
+                <td><a href="Edit/@student.Id">Edit @student.firstName</a></td>
+            </tr>
             }
         </tbody>
     </table>
