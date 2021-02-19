@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
+
+.vs/Donut_Deliverable1/v16/.suo
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
