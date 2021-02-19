@@ -14,9 +14,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color:#484847">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 bg-dark" id="arc-orange">
             <div class="container">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Attendance" asp-action="CheckIn">Arc Jacksonville Attendance System</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"></a>
+                <img src="/Images/white_Arc_Logo.png" alt="Arc Logo" height="100" width="150" /><br />
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,9 +29,13 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("admin")) {
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
-                                 </li>
+                                <li class="nav-item mr-md-2">
+                            <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+                        </li>
+                        <li class="nav-item mr-md-2">
+                            <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Student Profile Management</a>
+                        </li>
+                        @*<li class="nav-item">
                             }
                         }
 
@@ -46,7 +52,6 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container text-white" style="background-color:#484847">
             &copy; The Arc Jacksonville is a nonprofit 501(c)(3) tax-exempt organization.

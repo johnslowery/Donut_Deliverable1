@@ -7,12 +7,12 @@
 <div class="jumbotron vertical-center">
 
     <div class="text-center">
-        <h1>Check-In</h1>
+        <h1 class="arc-header-font">Check-In</h1>
 
 
         <form asp-action="Verification" asp-controller="Attendance" method="Post">
             <label for="nNumber" style="font-size:30px">Please enter your N-number: </label>
-            <input type="text" id="nNumber" placeholder="n11111111" name="nNumber" required /><br />
+            <input type="text" id="nNumber" placeholder="n11111111" name="nNumber" autocomplete="off" maxlength="9" required /><br />
 
             <input type="submit" value="Submit" class="btn btn-primary" /><br /><br />
             <img src="/Images/UNFcard-480x292.jpg" alt="Green check mark" height="200" width="333" /><br />

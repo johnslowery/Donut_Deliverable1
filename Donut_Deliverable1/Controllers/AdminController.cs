@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +21,7 @@ namespace Donut_Deliverable1.Controllers
             this.context = context;
             repository = repo;
         }
+
         public ActionResult Login()
         {
             return View();
