@@ -1,5 +1,6 @@
-﻿@model Donut_Deliverable1.Controllers.AttendanceController
+﻿@model Student
 @{
+
     ViewData["Title"] = "Verification";
 }
 
@@ -7,9 +8,13 @@
 
 <div class="text-center">
 
+
     <h3>Is this you?</h3>
-    <h5>John Lowery</h5>
+
+    <h4> @Model.firstName @Model.lastName</h4>
+    <h5> @Model.nNumber</h5>
+
     <img src="/Images/boy1.jpg" alt="Green check mark" width="250" height="250" />
-    <input type="submit" value="Yes" class="btn btn-lg btn-success" onclick="location.href='@Url.Action("Success", "Attendance")'" />
+    <input type="submit" value="Yes" class="btn btn-lg btn-success" onclick="location.href='@Url.Action("Success", "Attendance", Model)'" />
     <input type="submit" value="No" class="btn btn-lg btn-danger" onclick="location.href='@Url.Action("CheckIn", "Attendance")'" />
 </div>
