@@ -8,6 +8,8 @@ using Donut_Deliverable1.Models;
 using System.Data.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -66,22 +68,49 @@ namespace Donut_Deliverable1.Controllers
 
         public IActionResult Success(Student currentStudent)
 
-            //now to figure out how to get the stuff to show
         {
             //need to figure out for to get the student to insert into the attendance log and check if they have already checked in prior
-
-            /*            var GetDate = DateTime.Now;
-
-                        Attendance.(GetDate, currentStudent.nNumber);*/
 
 
 
             var currentTime = DateTime.Now;
+            DateTime lateTime = DateTime.Parse("2012/12/12 00:00:00.000");
 
             //finds attendance log for current student on the current date
-            var currentAttend = attendancerepository.GetAttendance(currentTime, currentStudent.nNumber);
+            var currentAttend = attendancerepository.GetAttendance(currentStudent.nNumber);
 
 
+                
+                SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=username;Password=password;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                //SQL Command to add students check in time
+                SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
+                SET checkIn = GETDATE() 
+                WHERE CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE) 
+                AND checkIn IS NULL 
+                AND nNumber = '" + currentStudent.nNumber + "'; ", con);
+                //SQL Command to add students checout
+                SqlCommand checkoutset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
+                SET checkOut = GETDATE() 
+                WHERE CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE) 
+                AND checkOut IS NULL 
+                AND checkIn IS NOT NULL
+                AND nNumber = '" + currentStudent.nNumber + "'; ", con);
+                // SQL command to mark a student as late 
+                SqlCommand markLate = new SqlCommand(@"UPDATE [dbo].AttendanceLog 
+                SET isTardy = '1' 
+                WHERE CAST(presentDateTime AS TIME) >= CAST('" + lateTime + "' AS TIME)" +
+                " AND nNumber = '" + currentStudent.nNumber + "' " +
+                "AND CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE)" +
+                "AND checkOut IS NULL;", con);
+
+
+                con.Open();
+                    checkoutset.ExecuteNonQuery();
+                    checkinset.ExecuteNonQuery();
+                    markLate.ExecuteNonQuery();
+     
+                con.Close();
+            
 
 
             return View(currentStudent);
