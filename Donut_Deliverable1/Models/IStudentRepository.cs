@@ -9,5 +9,6 @@ namespace Donut_Deliverable1.Models
     {
         IEnumerable<Student> Students { get; }
         Student GetStudent(int Id);
+        Student GetStudent(string nNumber);
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Donut_Deliverable1.Controllers.AttendanceController
+﻿@model Student
 
 @{
     ViewData["Title"] = "Success";
@@ -9,6 +9,8 @@
 <div class="jumbotron vertical-center">
     <div class="text-center">
         <h1>Success</h1>
+@*        //Just testing to make sure it still has same student*@
+        @Model.nNumber
             <img src="/Images/checksuccess.png" alt="Green check mark" width="250" height="250" />
             <h2>You have successfully checked in!</h2>
             <form asp-action="CheckIn" asp-controller="Attendance">

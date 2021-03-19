@@ -28,13 +28,15 @@
                     <ul class="navbar-nav flex-grow-1">
                         @if (User.Identity.IsAuthenticated)
                         {
-                            if (User.IsInRole("admin")) {
+                            if (User.IsInRole("admin"))
+                            {
                                 <li class="nav-item mr-md-2">
                             <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
                         </li>
                         <li class="nav-item mr-md-2">
                             <a class="nav-link text-dark bg-light rounded border border-warning" asp-area="" asp-controller="Admin" asp-action="Dashboard">Student Profile Management</a>
-                        </li>
+                        </li>}
+                        }
                         @*<li class="nav-item">
                             }
                         }

@@ -27,7 +27,9 @@ namespace Donut_Deliverable1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentDbConnection")));
+            services.AddDbContextPool<AttendanceDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentDbConnection")));
             services.AddTransient<IStudentRepository, EFStudentRepository>();
+            services.AddTransient<IAttendanceRepository, EFAttendanceRepository>();
             services.AddControllersWithViews();
         }
 

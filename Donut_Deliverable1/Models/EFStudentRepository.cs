@@ -26,5 +26,11 @@ namespace Donut_Deliverable1.Models
             _studentList = context.Students.ToList();
             return _studentList.FirstOrDefault(e => e.Id == Id);
         }
+
+        public Student GetStudent(string nNumber)
+        {
+            _studentList = context.Students.ToList();
+            return _studentList.FirstOrDefault(e => e.nNumber == nNumber);
+        }
     }
 }
