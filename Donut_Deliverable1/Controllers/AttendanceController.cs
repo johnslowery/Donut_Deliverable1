@@ -103,12 +103,13 @@ namespace Donut_Deliverable1.Controllers
                 "AND CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE)" +
                 "AND checkOut IS NULL;", con);
 
-
+                //opens the server connection
                 con.Open();
+                    //runs the SQL commands
                     checkoutset.ExecuteNonQuery();
                     checkinset.ExecuteNonQuery();
                     markLate.ExecuteNonQuery();
-     
+                //closes the server connection
                 con.Close();
             
 
