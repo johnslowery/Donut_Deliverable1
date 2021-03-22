@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Student>
+@model IEnumerable<Student>
 @{
     ViewData["Title"] = "StudentSearch";
 }
@@ -22,6 +22,10 @@
     }
 </style>
 
+<center><a asp-action="Create">Add a Student</a></center>
+
+<center><a asp-action="StudentSearchArchived">See All Students</a></center>
+
 <center>
     <table id="student_table">
         <thead>
@@ -44,11 +48,18 @@
                 <th>
                     Edit
                 </th>
+                <th>
+                    Archive
+                </th>
             </tr>
         </thead>
         <tbody>
             @foreach (var student in Model)
             {
+             @if(student.archived == true)
+             {
+                 continue;
+             }
             <tr>
                 <td><a href="StudentView/@student.Id">@student.firstName</a></td>
                 <td>@student.lastName</td>
@@ -56,6 +67,15 @@
                 <td>@student.birthDate</td>
                 <td>@student.scholarship</td>
                 <td><a href="Edit/@student.Id">Edit @student.firstName</a></td>
+                @if (student.archived == true)
+                {
+                    <td><a href="UnarchiveStudent/@student.Id">Unarchive @student.firstName</a></td>
+                }
+                else
+                {
+                    <td><a href="ArchiveStudent/@student.Id">Archive @student.firstName</a></td>
+                }
+
             </tr>
             }
         </tbody>
@@ -63,7 +83,7 @@
 </center>
 
 <br />
-<center><a asp-action="Create">Add a Student</a></center>
+
 
 @section Scripts
 {
