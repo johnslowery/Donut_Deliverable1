@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +13,8 @@ namespace Donut_Deliverable1.Models
         public String lastName { get; set; }
         public String scholarship { get; set; }
         public String birthDate { get; set; }
+
+        public Boolean archived { get; set; }
+        public byte[] studentImage { get; set; }
     }
 }
