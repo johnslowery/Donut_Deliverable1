@@ -1,4 +1,4 @@
-﻿@model Donut_Deliverable1.Models.Student
+@model Donut_Deliverable1.Models.Student
 
 @{
     ViewData["Title"] = "Create";
@@ -20,27 +20,27 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="firstName" class="control-label">First Name: </label>
-                <input asp-for="firstName" class="form-control" />
+                <input asp-for="firstName" class="form-control" required />
                 <span asp-validation-for="firstName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="lastName" class="control-label">Last Name: </label>
-                <input asp-for="lastName" class="form-control" />
+                <input asp-for="lastName" class="form-control" required />
                 <span asp-validation-for="lastName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="nNumber" class="control-label">UNF nNumber: </label>
-                <input asp-for="nNumber" class="form-control" />
+                <input asp-for="nNumber" class="form-control" required />
                 <span asp-validation-for="nNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="birthDate" class="control-label">Birth Date: </label>
-                <input asp-for="birthDate" class="form-control" />
+                <input asp-for="birthDate" class="form-control" type="date" required />
                 <span asp-validation-for="birthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -59,6 +59,11 @@
                 <span asp-validation-for="scholarship" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="studentImage" class="control-label">Student Picture: </label>
+                <input asp-for="studentImage" class="form-control" type="file" multiple="multiple" required />
+                <span asp-validation-for="studentImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -68,4 +73,3 @@
 <div>
     <a asp-action="StudentSearch">Back to List</a>
 </div>
-
