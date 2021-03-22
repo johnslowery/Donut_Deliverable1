@@ -100,7 +100,7 @@ namespace Donut_Deliverable1.Controllers
 
 
 
-            SqlConnection con = new SqlConnection("String goes here");
+            SqlConnection con = new SqlConnection("Connection string here");
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 

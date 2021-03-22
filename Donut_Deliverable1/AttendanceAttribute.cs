@@ -24,7 +24,7 @@ namespace Donut_Deliverable1
             {
 
 
-                SqlConnection con = new SqlConnection("String goes here");
+                SqlConnection con = new SqlConnection("Connection string here");
 
                 var nNumber = Convert.ToString(value);
                 SqlCommand studentExist = new SqlCommand(@"Select * from [dbo].[Students] WHERE nNumber = '" + nNumber + "';", con);
