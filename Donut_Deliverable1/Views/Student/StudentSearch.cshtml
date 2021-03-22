@@ -1,3 +1,98 @@
+<<<<<<< HEAD
+﻿@model IEnumerable<Student>
+@{
+    ViewData["Title"] = "StudentSearch";
+}
+
+
+<center><h1>Search Through Students</h1></center>
+<br />
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<style>
+    table, th, td {
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    h1, h2 {
+        font-family: Abril;
+    }
+
+    th, td {
+        font-family: "ITC Stone Sans";
+    }
+</style>
+
+<center><a asp-action="Create">Add a Student</a></center>
+
+<center><a asp-action="StudentSearchArchived">See All Students</a></center>
+
+<center>
+    <table id="student_table">
+        <thead>
+            <tr>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    nNumber
+                </th>
+                <th>
+                    Birth Date
+                </th>
+                <th>
+                    Funding Source(s)
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Archive
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in Model)
+            {
+             @if(student.archived == true)
+             {
+                 continue;
+             }
+            <tr>
+                <td><a href="StudentView/@student.Id">@student.firstName</a></td>
+                <td>@student.lastName</td>
+                <td>@student.nNumber</td>
+                <td>@student.birthDate</td>
+                <td>@student.scholarship</td>
+                <td><a href="Edit/@student.Id">Edit @student.firstName</a></td>
+                @if (student.archived == true)
+                {
+                    <td><a href="UnarchiveStudent/@student.Id">Unarchive @student.firstName</a></td>
+                }
+                else
+                {
+                    <td><a href="ArchiveStudent/@student.Id">Archive @student.firstName</a></td>
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</center>
+
+<br />
+
+
+@section Scripts
+{
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/student_table.js"></script>
+}
+=======
 ﻿@model IEnumerable<Student>
 @{
     ViewData["Title"] = "StudentSearch";
@@ -71,3 +166,4 @@
     <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/student_table.js"></script>
 }
+>>>>>>> d4598f3f240372dc15a85879ec3594443abab79d

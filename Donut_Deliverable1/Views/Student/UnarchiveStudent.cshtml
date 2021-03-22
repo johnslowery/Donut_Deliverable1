@@ -1,0 +1,28 @@
+﻿@model Student
+@{
+    ViewData["Title"] = Model.lastName;
+}
+
+<style>
+    h1, h2 {
+        font-family: Abril;
+    }
+
+    p {
+        font-family: "ITC Stone Sans";
+    }
+</style>
+
+
+
+<center>
+    <h1>Are you sure you wish to unarchive @Model.firstName @Model.lastName?</h1>
+    <br />
+    <form asp-action="UnarchiveStudent">
+        <div class="form-group">
+            <input type="submit" value="Yes, I am sure I would like to unarchive @Model.firstName" class="btn btn-success btn-lg" />
+        </div>
+    </form>
+    
+
+</center>

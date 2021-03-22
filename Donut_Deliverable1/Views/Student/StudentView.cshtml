@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+﻿@model Student
+@{
+    ViewData["Title"] = Model.lastName;
+}
+
+<style>
+    h1, h2 {
+        font-family: Abril;
+    }
+
+    p {
+        font-family: "ITC Stone Sans";
+    }
+</style>
+
+<h1>@Model.firstName @Model.lastName</h1>
+
+<h2>n Number</h2>
+<p>@Model.nNumber</p>
+<h2>Birth Date</h2>
+<p>@Model.birthDate</p>
+<h2>Scholarship Source</h2>
+<p>@Model.scholarship</p>
+<h2>@Model.firstName's Picture</h2>
+
+<p><img src='@Url.Action("GetImage", "Student")' width="250" height="300" /></p>
+=======
 ﻿@model Student
 @{
     ViewData["Title"] = "StudentView";
@@ -20,3 +48,4 @@
 <p>@Model.birthDate</p>
 <h2>Scholarship Source</h2>
 <p>@Model.scholarship</p>
+>>>>>>> d4598f3f240372dc15a85879ec3594443abab79d
