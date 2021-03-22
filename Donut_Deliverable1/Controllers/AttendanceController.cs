@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace Donut_Deliverable1.Controllers
 {
     public class AttendanceController : Controller
@@ -43,45 +44,63 @@ namespace Donut_Deliverable1.Controllers
         }
 
 
+        public ActionResult Verification()
+        {
+            return View(new Attendance());
+        }
+
 
         [HttpPost]
-        public IActionResult Verification(string nNumber)
+        public ActionResult Verification(Attend objUserModel)
         {
-            //Makes sure that the n-Number matches specified format
-            Regex pattern = new Regex(@"^[Nn][0-9]{8}$");
-
-            if (!pattern.IsMatch(nNumber))
+            //Goes to verification if n-Number is valid
+            if (ModelState.IsValid)
             {
-                return Content("Make sure you enter a valid n-Number");
+                var CurrStudent = repository.GetStudent(objUserModel.nNumber);
+                return View(CurrStudent);
             }
 
-
-            //Checks student list for matching N-number
-            var CurrStudent = repository.GetStudent(nNumber);
-
-
-            return View(CurrStudent);
-
-
+            //retuns to check in page if n-Number is not valid
+            return View("CheckIn");
         }
+
+
+        /*        [HttpPost]
+                public IActionResult Verification(string nNumber)
+                {
+                    //Makes sure that the n-Number matches specified format
+                    Regex pattern = new Regex(@"^[Nn][0-9]{8}$");
+
+                    if (!pattern.IsMatch(nNumber))
+                    {
+                        return Content("Make sure you enter a valid n-Number");
+                    }
+
+
+                    //Checks student list for matching N-number
+                    var CurrStudent = repository.GetStudent(nNumber);
+
+
+                    return View(CurrStudent);
+
+
+                }*/
 
 
         public IActionResult Success(Student currentStudent)
 
-        {
-            //need to figure out for to get the student to insert into the attendance log and check if they have already checked in prior
-
-
-
+        {            
             var currentTime = DateTime.Now;
-            DateTime lateTime = DateTime.Parse("2012/12/12 00:00:00.000");
+
+            //Date used to determine when a student is considered late
+            DateTime lateTime = DateTime.Parse("2012/12/12 16:00:00.000");
 
             //finds attendance log for current student on the current date
             var currentAttend = attendancerepository.GetAttendance(currentStudent.nNumber);
 
 
 
-            SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#NoThanks;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#lL33tKarthik;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 
