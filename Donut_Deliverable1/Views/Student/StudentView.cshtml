@@ -1,13 +1,14 @@
-﻿@model Student
+@model Student
 @{
-    ViewData["Title"] = "StudentView";
+    ViewData["Title"] = Model.lastName;
 }
 
 <style>
-    h1, h2{
+    h1, h2 {
         font-family: Abril;
     }
-    p{
+
+    p {
         font-family: "ITC Stone Sans";
     }
 </style>
@@ -20,3 +21,6 @@
 <p>@Model.birthDate</p>
 <h2>Scholarship Source</h2>
 <p>@Model.scholarship</p>
+<h2>@Model.firstName's Picture</h2>
+
+<p><img src='@Url.Action("GetImage", "Student")' width="250" height="300" /></p>
