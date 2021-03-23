@@ -17,5 +17,14 @@ namespace Donut_Deliverable1.Models
         }
 
         public DbSet<Student> Students { get; set; }
+
+        public DbSet<Attendance> AttendanceLog { get; set; }
+
+        //creates the composite key for AttendanceLog
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Attendance>()
+                .HasKey(a => new { a.nNumber, a.presentDateTime });
+        }
     }
 }
