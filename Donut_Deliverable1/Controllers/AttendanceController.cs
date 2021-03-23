@@ -82,7 +82,7 @@ namespace Donut_Deliverable1.Controllers
             DateTime lateTime = DateTime.Parse("2012/12/12 16:00:00.000");
 
 
-            SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#lL33tKarthik;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#FakePassword;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 
