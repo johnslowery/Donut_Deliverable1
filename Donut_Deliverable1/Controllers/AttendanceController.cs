@@ -69,12 +69,15 @@ namespace Donut_Deliverable1.Controllers
         [HttpPost]
         public ActionResult Verification(Attend objUserModel)
         {
+            string currentnNumber = objUserModel.nNumber;
+
+            currentnNumber = currentnNumber.Insert(0, "n");
 
             System.Diagnostics.Debug.WriteLine("Verify");
             //Goes to verification if n-Number is valid
             if (ModelState.IsValid)
             {
-                var CurrStudent = repository.GetStudent(objUserModel.nNumber);
+                var CurrStudent = repository.GetStudent(currentnNumber);
                 return View(CurrStudent);
             }
 
@@ -102,6 +105,7 @@ namespace Donut_Deliverable1.Controllers
             string absolutepath = HttpContext.Request.Path;
             var lastPart = absolutepath.Split('/').Last();
             int studentId = Int32.Parse(lastPart);
+            System.Diagnostics.Debug.WriteLine(studentId);
             var currentStudent = repository.GetStudent(studentId);
             System.Diagnostics.Debug.WriteLine("in success");
             System.Diagnostics.Debug.WriteLine(currentStudent.nNumber);
@@ -109,7 +113,7 @@ namespace Donut_Deliverable1.Controllers
             DateTime lateTime = DateTime.Parse("2012/12/12 16:00:00.000");
 
 
-            SqlConnection con = new SqlConnection("Connection String Goes Here");
+            SqlConnection con = new SqlConnection("Connection string goes here");
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 
