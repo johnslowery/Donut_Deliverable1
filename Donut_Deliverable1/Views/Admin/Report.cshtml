@@ -1,13 +1,17 @@
-﻿@model IEnumerable<Student>
+﻿@model Donut_Deliverable1.ViewModels.ReportViewModel
 @{
     ViewData["Title"] = "Weekly Report";
 }
 
-<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
-<div class="container ">
+<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+<div class="container">
     <div class="row p-2 justify-content-start">
         <div class="col-4">
-            <input type="date" />
+            <form asp-action="Report" asp-controller="Admin">
+                <input asp-for="BeginningDate" type="date" value="@Model.BeginningDate" name="BeginningDate" />
+                <input asp-for="EndingDate" type="date" value="@Model.EndingDate" name="EndingDate" />
+                <button class="btn btn-warning">Change Date</button>
+            </form>
         </div>
         <div class="col-3">
             <form asp-action="Dashboard">
@@ -17,45 +21,40 @@
     </div>
     <div class="row">
         <div class="col-auto">
-            <table id="dashboard_table">
+            <table id="report_table">
                 <thead>
                     <tr>
                         <th scope="col">N Number</th>
                         <th scope="col">Name</th>
                         <th scope="col">Lates</th>
                         <th scope="col">Absences</th>
-                        <th scope="col">Profile</th>
+                        <th scope="col" class="notexport">Profile</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var student in Model)
-                    {
-                        <tr>
-                            <td>@student.nNumber</td>
-                            <td>@student.firstName @student.lastName</td>
-                            <td class="align-middle" style="text-align: center">0</td>
-                            <td class="align-middle" style="text-align: center">0</td>
-                            <td class="align-middle">
-                                <a href='@Url.Action("StudentView", "Student")\@student.Id'>
-                                    <input type='button' class="btn btn-info btn-sm btn-block" value="To Profile" />
-                                </a>
-                            </td>
-
-                        </tr>
-                    }
+                @foreach (var a in Model.reports)
+                {
+                    <tr>
+                        <td>@a.nNumber</td>
+                        <td>@a.firstName @a.lastName</td>
+                        <td>@a.tardies</td>
+                        <td>@a.absences</td>
+                        <td class="align-middle notexport">
+                            <a href='@Url.Action("StudentView", "Student")\@a.Id'>
+                                <input type='button' class="btn btn-info btn-sm btn-block" value="To Profile" />
+                            </a>
+                        </td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
     </div>
-
 </div>
 
 @section Scripts
 {
-    <!--
-    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
-    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
@@ -64,5 +63,5 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
-    <script src="~/js/dashboard_table.js"></script>
-}
+    <script src="~/js/report_table.js"></script>
+} 
