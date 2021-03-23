@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -53,6 +54,8 @@ namespace Donut_Deliverable1.Controllers
         [HttpPost]
         public ActionResult Verification(Attend objUserModel)
         {
+
+            System.Diagnostics.Debug.WriteLine("Verify");
             //Goes to verification if n-Number is valid
             if (ModelState.IsValid)
             {
@@ -65,42 +68,21 @@ namespace Donut_Deliverable1.Controllers
         }
 
 
-        /*        [HttpPost]
-                public IActionResult Verification(string nNumber)
-                {
-                    //Makes sure that the n-Number matches specified format
-                    Regex pattern = new Regex(@"^[Nn][0-9]{8}$");
 
-                    if (!pattern.IsMatch(nNumber))
-                    {
-                        return Content("Make sure you enter a valid n-Number");
-                    }
+        public IActionResult Success()
+        {
 
-
-                    //Checks student list for matching N-number
-                    var CurrStudent = repository.GetStudent(nNumber);
-
-
-                    return View(CurrStudent);
-
-
-                }*/
-
-
-        public IActionResult Success(Student currentStudent)
-
-        {            
-            var currentTime = DateTime.Now;
-
+            string absolutepath = HttpContext.Request.Path;
+            var lastPart = absolutepath.Split('/').Last();
+            int studentId = Int32.Parse(lastPart);
+            var currentStudent = repository.GetStudent(studentId);
+            System.Diagnostics.Debug.WriteLine("in success");
+            System.Diagnostics.Debug.WriteLine(currentStudent.nNumber);
             //Date used to determine when a student is considered late
             DateTime lateTime = DateTime.Parse("2012/12/12 16:00:00.000");
 
-            //finds attendance log for current student on the current date
-            var currentAttend = attendancerepository.GetAttendance(currentStudent.nNumber);
 
-
-
-            SqlConnection con = new SqlConnection("String goes here");
+            SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#lL33tKarthik;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 
@@ -124,6 +106,7 @@ namespace Donut_Deliverable1.Controllers
 
             //opens the server connection
             con.Open();
+            System.Diagnostics.Debug.WriteLine("Connection open");
             //runs the SQL commands
             checkoutset.ExecuteNonQuery();
             checkinset.ExecuteNonQuery();
@@ -131,7 +114,7 @@ namespace Donut_Deliverable1.Controllers
             //closes the server connection
             con.Close();
 
-
+            System.Diagnostics.Debug.WriteLine("Done");
 
             return View(currentStudent);
         }
