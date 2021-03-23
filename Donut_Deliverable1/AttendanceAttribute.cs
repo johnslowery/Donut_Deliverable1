@@ -24,7 +24,7 @@ namespace Donut_Deliverable1
             {
 
 
-                SqlConnection con = new SqlConnection("Server=tcp:arcdb.database.windows.net,1433;Initial Catalog=arcDB;Persist Security Info=False;User ID=serveradmin;Password=#FakePAss;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                SqlConnection con = new SqlConnection("Connection String Goes Here");
 
                 var nNumber = Convert.ToString(value);
                 SqlCommand studentExist = new SqlCommand(@"Select * from [dbo].[Students] WHERE nNumber = '" + nNumber + "';", con);
