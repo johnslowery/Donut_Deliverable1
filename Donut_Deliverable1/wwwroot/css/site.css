@@ -97,3 +97,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+.studentinput {
+    height: 300px;
+}
