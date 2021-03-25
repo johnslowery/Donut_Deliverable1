@@ -2,6 +2,18 @@
 @{
     ViewBag.Title = "CheckIn";
 }
+
+    <style>
+        .btn-xlarge {
+            padding: 18px 28px;
+            font-size: 50px;
+            line-height: normal;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+        }
+    </style>
+
 <head>
     <link rel="stylesheet" href="~/css/site.css">
 </head>
@@ -16,7 +28,7 @@
             <input type="tel" id="nNumber" placeholder="01234567"  name="nNumber" style="font-size:18pt;" maxlength="8" required autofocus /><br />
 
 
-            <input type="submit" value="Submit" class="btn btn-primary" />
+            <input type="submit" value="Submit" class="btn btn-primary btn-xlarge" />
             <br />
             @Html.ValidationMessageFor(m => m.nNumber, "", new { @class = "text-danger font-weight-bold" })
             <br />

@@ -4,6 +4,17 @@
     ViewData["Title"] = "Verification";
 }
 
+    <style>
+        .btn-xlarge {
+            padding: 18px 28px;
+            font-size: 50px;
+            line-height: normal;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+        }
+    </style>
+
 <h1>Verification</h1>
 
 <div class="text-center">
@@ -16,6 +27,6 @@
 
 
     <img src='@Url.Action("GetImage", "Attendance")/@Model.Id' width="250" height="300" />
-    <input type="submit" value="Yes" class="btn btn-lg btn-success" onclick="location.href='@Url.Action("Success", "Attendance")/@Model.Id'" />
-    <input type="submit" value="No" class="btn btn-lg btn-danger" onclick="location.href='@Url.Action("CheckIn", "Attendance")'" />
+    <input type="submit" value="Yes" class="btn btn-xlarge btn-success" onclick="location.href='@Url.Action("Success", "Attendance")/@Model.Id'" />
+    <input type="submit" value="No" class="btn btn-xlarge btn-danger" onclick="location.href='@Url.Action("CheckIn", "Attendance")'" />
 </div>
