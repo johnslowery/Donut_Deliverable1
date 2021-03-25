@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authorization;
 using Donut_Deliverable1.ViewModels;
 using System.Globalization;
 using System.Diagnostics;
+using System.Data.SqlClient;
+using Microsoft.AspNetCore.Routing;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -35,37 +37,42 @@ namespace Donut_Deliverable1.Controllers
         {
             return View();
         }
-
+  
         public ActionResult Dashboard()
         {
             if (User.IsInRole("admin"))
             {
-                var students = context.Students;
-                var attendances = context.AttendanceLog;
-                var todaysAttendance = from a in attendances
-                                       join s in students on a.nNumber equals s.nNumber
-                                       where a.presentDateTime.Date == DateTime.Today.Date
-                                       select new dayAttendance
-                                       {
-                                           Id = s.Id,
-                                           firstName = s.firstName,
-                                           lastName = s.lastName,
-                                           nNumber = s.nNumber,
-                                           datePresentTime = a.presentDateTime,
-                                           checkIn = (DateTime)a.checkIn,
-                                           checkOut = (DateTime)a.checkOut,
-                                           isExcused = (bool)a.isExcused,
-                                           isTardy = (bool)a.isTardy,
-                                           isAbsent = (bool)a.isAbsent,
-                                           note = a.note
-                                       };
-                var AttendanceViewModel = new AttendanceViewModel
-                {
-                    QueryDate = DateTime.Today.ToString("yyyy-MM-dd"),
-                    dayAttendances = todaysAttendance
-                };
+                Debug.WriteLine("hi get");
 
-                return View(AttendanceViewModel);
+
+                    var date = DateTime.Today;
+                    var students = context.Students;
+                    var attendances = context.AttendanceLog;
+                    var todaysAttendance = from a in attendances
+                                           join s in students on a.nNumber equals s.nNumber
+                                           where a.presentDateTime.Date == date.Date
+                                           select new dayAttendance
+                                           {
+                                               Id = s.Id,
+                                               firstName = s.firstName,
+                                               lastName = s.lastName,
+                                               nNumber = s.nNumber,
+                                               datePresentTime = a.presentDateTime.ToLocalTime(),
+                                               checkIn = (DateTime)a.checkIn,
+                                               checkOut = (DateTime)a.checkOut,
+                                               isExcused = (bool)a.isExcused,
+                                               isTardy = (bool)a.isTardy,
+                                               isAbsent = (bool)a.isAbsent,
+                                               note = a.note
+                                           };
+                    var AttendanceViewModel = new AttendanceViewModel
+                    {
+                        QueryDate = date.Date.ToString("yyyy-MM-dd"),
+                        dayAttendances = todaysAttendance
+                    };
+
+                    return View(AttendanceViewModel);
+                
             } 
             else if (User.IsInRole("attendance"))
             {
@@ -83,14 +90,16 @@ namespace Donut_Deliverable1.Controllers
         {
             if (User.IsInRole("admin"))
             {
-
+                Debug.WriteLine("hi post");
                 if (date.queryDate.Date.ToString("yyyy-MM-dd") == "0001-01-01")
                 {
+                    Debug.WriteLine("hi post bad date");
+                    var today = DateTime.Today;
                     var students = context.Students;
                     var attendances = context.AttendanceLog;
                     var todaysAttendance = from a in attendances
                                            join s in students on a.nNumber equals s.nNumber
-                                           where a.presentDateTime.Date == DateTime.Today.Date
+                                           where a.presentDateTime.Date == today.Date
                                            select new dayAttendance
                                            {
                                                Id = s.Id,
@@ -107,7 +116,7 @@ namespace Donut_Deliverable1.Controllers
                                            };
                     var AttendanceViewModel = new AttendanceViewModel
                     {
-                        QueryDate = DateTime.Today.ToString("yyyy-MM-dd"),
+                        QueryDate = today.Date.ToString("yyyy-MM-dd"),
                         dayAttendances = todaysAttendance
                     };
 
@@ -115,6 +124,7 @@ namespace Donut_Deliverable1.Controllers
                 }
                 else
                 {
+                    Debug.WriteLine("hi post good date");
                     var students = context.Students;
                     var attendances = context.AttendanceLog;
                     var daysAttendance = from a in attendances
@@ -153,65 +163,157 @@ namespace Donut_Deliverable1.Controllers
             }
         }
         [HttpPost]
-        public EmptyResult UpdateExcused([FromBody] DashUpdateBool update)
+        public ActionResult UpdateExcused([FromBody] DashUpdateBool update)
         {
+            System.Diagnostics.Debug.WriteLine("In Excused!");
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
-
-            var updateAttendance = context.AttendanceLog.Where(x => x.nNumber == update.nNumber && x.presentDateTime.Date == theDate.Date).First();
-            bool newBool;
+            char newBool;
             if (update.updateBool == "True")
-                newBool = true;
+                newBool = '1';
             else
-                newBool = false;
-            updateAttendance.isExcused = newBool;
-            context.SaveChanges();
+                newBool = '0';
+
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET isExcused = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand excusedSet = new SqlCommand(queryString, con);
+
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            excusedSet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine("Excused Sent!");
 
             return new EmptyResult();
         }
 
         [HttpPost]
-        public EmptyResult UpdateTardy([FromBody] DashUpdateBool update)
+        public ActionResult UpdateTardy([FromBody] DashUpdateBool update)
         {
+            System.Diagnostics.Debug.WriteLine("In Tardy!");
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
-
-            var updateAttendance = context.AttendanceLog.Where(x => x.nNumber == update.nNumber && x.presentDateTime.Date == theDate.Date).First();
-            bool newBool;
+            char newBool;
             if (update.updateBool == "True")
-                newBool = true;
+                newBool = '1';
             else
-                newBool = false;
-            updateAttendance.isTardy = newBool;
-            context.SaveChanges();
+                newBool = '0';
+
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET isTardy = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand tardySet = new SqlCommand(queryString, con);
+
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            tardySet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine("Tardy Sent!");
 
             return new EmptyResult();
         }
 
         [HttpPost]
-        public EmptyResult UpdateAbsent([FromBody] DashUpdateBool update)
+        public ActionResult UpdateAbsent([FromBody] DashUpdateBool update)
         {
+            System.Diagnostics.Debug.WriteLine("In Absent!");
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
-
-            var updateAttendance = context.AttendanceLog.Where(x => x.nNumber == update.nNumber && x.presentDateTime.Date == theDate.Date).First();
-            bool newBool;
+            char newBool;
             if (update.updateBool == "True")
-                newBool = true;
+                newBool = '1';
             else
-                newBool = false;
-            updateAttendance.isAbsent = newBool;
-            context.SaveChanges();
+                newBool = '0';
+
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET isAbsent = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand absentSet = new SqlCommand(queryString, con);
+
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            absentSet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine("Absent Sent!");
 
             return new EmptyResult();
         }
 
         [HttpPost]
-        public EmptyResult UpdateNote([FromBody] DashUpdateNote update)
+        public ActionResult UpdateNote([FromBody] DashUpdateNote update)
         {
+            System.Diagnostics.Debug.WriteLine("In Note!");
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET note = '" + update.updateNote + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand noteSet = new SqlCommand(queryString, con);
 
-            var updateAttendance = context.AttendanceLog.Where(x => x.nNumber == update.nNumber && x.presentDateTime.Date == theDate.Date).First();
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            noteSet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
 
-            updateAttendance.note = update.updateNote;
-            context.SaveChanges();
+            System.Diagnostics.Debug.WriteLine("Note Sent!");
+
+            return new EmptyResult();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCheckIn([FromBody] DashUpdateTime update)
+        {
+            System.Diagnostics.Debug.WriteLine("In CheckIn!");
+            System.Diagnostics.Debug.WriteLine(update.updateTime);
+            System.Diagnostics.Debug.WriteLine(update.presentDateTime);
+            var originalDate = update.presentDateTime.Split(" ");
+            string newCheckInString = originalDate[0] + " " + update.updateTime;
+            System.Diagnostics.Debug.WriteLine(newCheckInString);
+
+            DateTime theDate = Convert.ToDateTime(update.presentDateTime);
+            DateTime newCheckIn = Convert.ToDateTime(newCheckInString);
+            newCheckIn = newCheckIn.ToUniversalTime();
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET checkIn = '" + newCheckIn + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand noteSet = new SqlCommand(queryString, con);
+
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            noteSet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine("CheckIn Sent!");
+
+            return new EmptyResult();
+        }
+
+        [HttpPost]
+        public ActionResult UpdateCheckOut([FromBody] DashUpdateTime update)
+        {
+            System.Diagnostics.Debug.WriteLine("In CheckOut!");
+            System.Diagnostics.Debug.WriteLine(update.updateTime);
+
+            DateTime theDate = Convert.ToDateTime(update.presentDateTime);
+            DateTime newCheckOut = Convert.ToDateTime(update.updateTime);
+            newCheckOut = newCheckOut.ToUniversalTime();
+            SqlConnection con = new SqlConnection("connection string here!");
+            string queryString = "UPDATE [dbo].AttendanceLog SET checkOut = '" + newCheckOut + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
+            SqlCommand noteSet = new SqlCommand(queryString, con);
+
+            //opens the server connection
+            con.Open();
+            //runs the SQL command
+            noteSet.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine("CheckOut Sent!");
 
             return new EmptyResult();
         }
@@ -289,13 +391,11 @@ namespace Donut_Deliverable1.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Report([FromForm] CalendarGetter BeginningDate, CalendarGetter EndingDate)
+        public ActionResult Report([FromForm] DoubleCalendarGetter dates)
         {
             if (User.IsInRole("admin"))
             {
-                Debug.WriteLine(BeginningDate.queryDate);
-                Debug.WriteLine(EndingDate.queryDate);
-                if (BeginningDate.queryDate.Date.ToString("yyyy-MM-dd") == "0001-01-01" || EndingDate.queryDate.Date.ToString("yyyy-MM-dd") == "0001-01-01")
+                if (dates.firstDate.Date.ToString("yyyy-MM-dd") == "0001-01-01" || dates.secondDate.Date.ToString("yyyy-MM-dd") == "0001-01-01")
                 {
                     var date = DateTime.Today;
                     var currentWeekDay = -(int)date.DayOfWeek;
@@ -361,7 +461,7 @@ namespace Donut_Deliverable1.Controllers
                     var attendances = context.AttendanceLog;
                     var weekReportList = from a in attendances
                                          join s in students on a.nNumber equals s.nNumber
-                                         where (a.presentDateTime.Date >= BeginningDate.queryDate.Date && a.presentDateTime.Date <= EndingDate.queryDate.Date) && ((Boolean)a.isAbsent || (Boolean)a.isTardy)
+                                         where (a.presentDateTime.Date >= dates.firstDate.Date && a.presentDateTime.Date <= dates.secondDate.Date) && ((Boolean)a.isAbsent || (Boolean)a.isTardy)
                                          select new reportList
                                          {
                                              Id = s.Id,
@@ -404,8 +504,8 @@ namespace Donut_Deliverable1.Controllers
                     }
                     var ReportViewModel = new ReportViewModel
                     {
-                        BeginningDate = BeginningDate.queryDate.Date.ToString("yyyy-MM-dd"),
-                        EndingDate = EndingDate.queryDate.Date.ToString("yyyy-MM-dd"),
+                        BeginningDate = dates.firstDate.Date.ToString("yyyy-MM-dd"),
+                        EndingDate = dates.secondDate.Date.ToString("yyyy-MM-dd"),
                         reports = summaries
                     };
 

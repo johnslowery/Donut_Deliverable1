@@ -10,13 +10,16 @@
                 else if(column == 7){
                     return $(data).text()
                 }
+                else if (column == 2 || column == 3) {
+                    return $(data).text()
+                }
                 else return data
             }
         }
     }
 };
 
-$(document).ready(function () {
+var table = $(document).ready(function () {
     $("#dashboard_table").DataTable({
         dom: 'Bfrtip',
         buttons: [
@@ -26,7 +29,9 @@ $(document).ready(function () {
                 extend: "excel"
             }), $.extend(true, {}, buttonCommon, {
                 extend: "pdf"
-            })
+            }), $.extend(true, {}, buttonCommon, {
+                extend: "print"
+            }),
         ]
     });
 });

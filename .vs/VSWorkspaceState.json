@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Donut_Deliverable1"
+    "\\Donut_Deliverable1",
+    "\\Donut_Deliverable1\\Controllers",
+    "\\Donut_Deliverable1\\Models",
+    "\\Donut_Deliverable1\\ViewModels",
+    "\\Donut_Deliverable1\\Views",
+    "\\Donut_Deliverable1\\Views\\Admin"
   ],
-  "SelectedNode": "\\Donut_Deliverable1\\Donut_Deliverable1.sln",
+  "SelectedNode": "\\Donut_Deliverable1.sln",
   "PreviewInSolutionExplorer": false
 }
