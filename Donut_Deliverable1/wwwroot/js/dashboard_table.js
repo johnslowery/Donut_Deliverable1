@@ -11,7 +11,9 @@
                     return $(data).text()
                 }
                 else if (column == 2 || column == 3) {
-                    return $(data).text()
+                    return node.firstChild.tagName === "INPUT" ?
+                        node.firstElementChild.value :
+                        data;
                 }
                 else return data
             }
