@@ -362,7 +362,7 @@
             }
         }
         function updateCheckIn(getnNumber, getPresentDateTime, inOriginal, inUpdate) {
-            if (inOriginal == inUpdate.value) {
+            if (inOriginal == inUpdate.value || inUpdate.value == "") {
                 return;
             }
 
@@ -383,7 +383,7 @@
 
         }
         function updateCheckOut(getnNumber, getPresentDateTime, outOriginal, outUpdate) {
-            if (outOriginal == outUpdate.value) {
+            if (outOriginal == outUpdate.value || outUpdate.value == "") {
                 return;
             }
 
