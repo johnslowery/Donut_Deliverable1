@@ -5,15 +5,17 @@
     ViewData["Title"] = "Success";
 }
 <head runat="server">
-    <meta http-equiv="Refresh" content="5;url=/Attendance/CheckIn" />
+    <meta http-equiv="Refresh" content="3;url=/Attendance/CheckIn" />
 </head>
 <div class="jumbotron vertical-center">
     <div class="text-center">
-        <h1>Success</h1>
-        <img src="/Images/checksuccess.png" alt="Green check mark" width="250" height="250" />
-        <h2>Your attendance was proccessed successfully!</h2>
         <form asp-action="CheckIn" asp-controller="Attendance">
             <input type="submit" value="Return to home..." class="btn btn-lg btn-primary" />
         </form>
+
+        <h1>Success</h1>
+        <img src="/Images/checksuccess.png" alt="Green check mark" width="175" height="175" class="responsive" />
+        <h2>Your attendance was proccessed successfully!</h2>
+
     </div>
 </div>

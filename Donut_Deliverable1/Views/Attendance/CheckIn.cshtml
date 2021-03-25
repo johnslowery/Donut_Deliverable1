@@ -2,7 +2,9 @@
 @{
     ViewBag.Title = "CheckIn";
 }
-
+<head>
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
 <div class="jumbotron vertical-center">
 
     <div class="text-center">
@@ -11,7 +13,7 @@
         <form asp-action="Verification" asp-controller="Attendance" method="Post">
 
             <label for="nNumber" style="font-size:30px">Please enter your N-number: </label>
-            <input type="tel" id="nNumber" placeholder="01234567"  name="nNumber" autocomplete="off" maxlength="8" required /><br />
+            <input type="tel" id="nNumber" placeholder="01234567"  name="nNumber" style="font-size:18pt;" maxlength="8" required autofocus /><br />
 
 
             <input type="submit" value="Submit" class="btn btn-primary" />
