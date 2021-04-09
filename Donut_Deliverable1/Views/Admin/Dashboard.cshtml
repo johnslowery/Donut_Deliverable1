@@ -1,5 +1,6 @@
 ﻿@model Donut_Deliverable1.ViewModels.AttendanceViewModel
-@{ ViewData["Title"] = "Admin Dashboard"; }
+@{ string title = "Admin Dashboard for " + Model.QueryDate;}
+@{ ViewData["Title"] = title; }
 
 <!--<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />-->
 <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
