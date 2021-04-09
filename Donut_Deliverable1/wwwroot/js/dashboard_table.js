@@ -24,6 +24,7 @@
 var table = $(document).ready(function () {
     $("#dashboard_table").DataTable({
         dom: 'Bfrtip',
+        paging: false,
         buttons: [
             'copy', $.extend(true, {}, buttonCommon, {
                 extend: "csv"
