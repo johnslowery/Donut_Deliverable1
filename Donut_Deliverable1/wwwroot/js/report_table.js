@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     $("#report_table").DataTable({
         dom: 'Bfrtip',
+        paging: false,
         buttons: [
             {
                 extend: 'copy',
