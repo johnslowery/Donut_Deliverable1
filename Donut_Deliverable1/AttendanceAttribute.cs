@@ -24,7 +24,7 @@ namespace Donut_Deliverable1
             {
 
 
-                SqlConnection con = new SqlConnection("String goes here");
+                SqlConnection con = new SqlConnection("String Goes here");
 
                 var nNumber = Convert.ToString(value);
                 nNumber = nNumber.Insert(0, "n");
