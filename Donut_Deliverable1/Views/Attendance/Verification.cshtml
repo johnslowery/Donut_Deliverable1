@@ -20,13 +20,27 @@
 <div class="text-center">
 
 
+    @await Component.InvokeAsync("InOut", new { number = @Model.nNumber })
+
     <h3>Is this you?</h3>
 
     <h4> @Model.firstName @Model.lastName</h4>
     <h5> @Model.nNumber</h5>
 
 
-    <img src='@Url.Action("GetImage", "Attendance")/@Model.Id' width="250" height="300" />
-    <input type="submit" value="Yes" class="btn btn-xlarge btn-success" onclick="location.href='@Url.Action("Success", "Attendance")/@Model.Id'" />
-    <input type="submit" value="No" class="btn btn-xlarge btn-danger" onclick="location.href='@Url.Action("CheckIn", "Attendance")'" />
+    <img src='@Url.Action("GetImage", "Attendance")/@Model.Id' width="250" height="300" /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Yes" class="btn btn-xlarge btn-success" onclick="location.href='@Url.Action("Success", "Attendance")/@Model.Id'" />
+            </div>
+            <div class="col">
+
+            </div>
+            <div class="col">
+                <input type="submit" value="No" class="btn btn-xlarge btn-danger" onclick="location.href='@Url.Action("CheckIn", "Attendance")'" />
+            </div>
+        </div>
+    </div>
+
 </div>

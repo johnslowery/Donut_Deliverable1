@@ -15,7 +15,8 @@ using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 using System.IO;
 using Microsoft.Azure;
-
+using System.Configuration;
+using System.Web;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -97,7 +98,44 @@ namespace Donut_Deliverable1.Controllers
             return File(imageByteData, "image/jpg");
         }
 
+        public ActionResult GetStatus(Student student)
+        {
 
+            string absolutepath = HttpContext.Request.Path;
+            var lastPart = absolutepath.Split('/').Last();
+            int studentId = Int32.Parse(lastPart);
+
+            System.Diagnostics.Debug.WriteLine(studentId);
+            System.Diagnostics.Debug.WriteLine("in status");
+
+            var currentStudent = repository.GetStudent(studentId);
+
+            System.Diagnostics.Debug.WriteLine(currentStudent.nNumber);
+
+            SqlConnection con = new SqlConnection("String goes here");
+
+            SqlCommand inorout = new SqlCommand(@"select checkOut from [dbo].[AttendanceLog] 
+                WHERE CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE) 
+                AND nNumber = '" + currentStudent.nNumber + "'; ", con);
+
+
+            con.Open();
+            System.Diagnostics.Debug.WriteLine("Connection open");
+            //runs the SQL commands
+            var hi = inorout.ExecuteNonQuery();
+            //closes the server connection
+            con.Close();
+
+            System.Diagnostics.Debug.WriteLine(hi);
+            string status = "out";
+            if(hi == -1)
+            {
+                status = "<h2><strong>In</strong></h2>";
+            }
+
+            return base.Content(status, "text/html");
+
+        }
 
         public IActionResult Success()
         {
