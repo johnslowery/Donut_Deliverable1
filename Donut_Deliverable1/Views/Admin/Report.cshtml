@@ -1,7 +1,6 @@
 ﻿@model Donut_Deliverable1.ViewModels.ReportViewModel
-@{
-    ViewData["Title"] = "Attendance Report";
-}
+@{ string title = "Attendance Report for " + Model.BeginningDate + " to " + Model.EndingDate;}
+@{ ViewData["Title"] = title; }
 
 <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
 <div class="container">
