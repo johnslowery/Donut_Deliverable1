@@ -106,3 +106,21 @@ input[type=number] {
 .studentinput {
     height: 300px;
 }
+
+#left-column {
+    width: 85%;
+}
+
+#right-column {
+    width: 15%;
+    margin-left: auto;
+}
+
+#dash-left-column {
+    width: 15%;
+}
+
+#dash-mid-column {
+    width: 70%;
+    margin-left: auto;
+}
