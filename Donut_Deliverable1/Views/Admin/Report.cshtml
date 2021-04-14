@@ -3,22 +3,22 @@
 @{ ViewData["Title"] = title; }
 
 <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
-<div class="container">
-    <div class="row p-2 justify-content-start">
-        <div class="col-4">
+<div class="flex-column">
+    <div class="flex-lg-row">
+        <div class="flex-column" id="left-column">
             <form asp-action="Report" asp-controller="Admin">
                 <input type="date" value="@Model.BeginningDate" id="firstDate" name="firstDate" />
                 <input type="date" value="@Model.EndingDate" id="secondDate" name="secondDate" />
                 <button class="btn btn-warning">Change Date</button>
             </form>
         </div>
-        <div class="col-3">
+        <div class="flex-column" id="right-column">
             <form asp-action="Dashboard">
                 <button class="btn btn-warning">Daily Dashboard</button>
             </form>
         </div>
     </div>
-    <div class="row">
+    <div class="flex-lg-row">
         <div class="col-auto">
             <table id="report_table">
                 <thead>
