@@ -42,7 +42,7 @@ namespace Donut_Deliverable1.ViewComponents
 
             System.Diagnostics.Debug.WriteLine(currentStudent.nNumber);
 
-            SqlConnection con = new SqlConnection("StringGoesHere");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
 
             SqlCommand inorout = new SqlCommand(@"select checkIn from [dbo].[AttendanceLog] 
                             WHERE CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE) 

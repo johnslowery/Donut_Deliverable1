@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
+
 
 namespace Donut_Deliverable1
 {
@@ -24,7 +26,7 @@ namespace Donut_Deliverable1
             {
 
 
-                SqlConnection con = new SqlConnection("String Goes here");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
 
                 var nNumber = Convert.ToString(value);
                 nNumber = nNumber.Insert(0, "n");

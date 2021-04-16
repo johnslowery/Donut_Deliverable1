@@ -12,6 +12,9 @@ using System.Globalization;
 using System.Diagnostics;
 using System.Data.SqlClient;
 using Microsoft.AspNetCore.Routing;
+using System.Configuration;
+using System.Web;
+using Microsoft.Extensions.Configuration;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -173,7 +176,7 @@ namespace Donut_Deliverable1.Controllers
             else
                 newBool = '0';
 
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET isExcused = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand excusedSet = new SqlCommand(queryString, con);
 
@@ -200,7 +203,7 @@ namespace Donut_Deliverable1.Controllers
             else
                 newBool = '0';
 
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET isTardy = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand tardySet = new SqlCommand(queryString, con);
 
@@ -227,7 +230,7 @@ namespace Donut_Deliverable1.Controllers
             else
                 newBool = '0';
 
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET isAbsent = '" + newBool + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand absentSet = new SqlCommand(queryString, con);
 
@@ -248,7 +251,7 @@ namespace Donut_Deliverable1.Controllers
         {
             System.Diagnostics.Debug.WriteLine("In Note!");
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET note = '" + update.updateNote + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand noteSet = new SqlCommand(queryString, con);
 
@@ -277,7 +280,7 @@ namespace Donut_Deliverable1.Controllers
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
             DateTime newCheckIn = Convert.ToDateTime(newCheckInString);
             newCheckIn = newCheckIn.ToUniversalTime();
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET checkIn = '" + newCheckIn + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand noteSet = new SqlCommand(queryString, con);
 
@@ -302,7 +305,7 @@ namespace Donut_Deliverable1.Controllers
             DateTime theDate = Convert.ToDateTime(update.presentDateTime);
             DateTime newCheckOut = Convert.ToDateTime(update.updateTime);
             newCheckOut = newCheckOut.ToUniversalTime();
-            SqlConnection con = new SqlConnection("connection string here!");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
             string queryString = "UPDATE [dbo].AttendanceLog SET checkOut = '" + newCheckOut + "' WHERE CAST(presentDateTime AS DATE) = '" + theDate + "' AND nNumber = '" + update.nNumber + "'; ";
             SqlCommand noteSet = new SqlCommand(queryString, con);
 
