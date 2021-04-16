@@ -17,6 +17,7 @@ using System.IO;
 using Microsoft.Azure;
 using System.Configuration;
 using System.Web;
+using Microsoft.Extensions.Configuration;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -33,7 +34,6 @@ namespace Donut_Deliverable1.Controllers
         private readonly CloudBlobContainer _container;
 
 
-
         public AttendanceController(AppDbContext context, IStudentRepository repo, AttendanceDbContext attendancecontext, IAttendanceRepository attendancerepo)
         {
             this.context = context;
@@ -47,6 +47,7 @@ namespace Donut_Deliverable1.Controllers
 
             _client = account.CreateCloudBlobClient();
             _container = _client.GetContainerReference("studentimages");
+
         }
         public IActionResult CheckIn()
         {
@@ -112,7 +113,7 @@ namespace Donut_Deliverable1.Controllers
 
             System.Diagnostics.Debug.WriteLine(currentStudent.nNumber);
 
-            SqlConnection con = new SqlConnection("String goes here");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString);
 
             SqlCommand inorout = new SqlCommand(@"select checkOut from [dbo].[AttendanceLog] 
                 WHERE CAST(presentDateTime AS DATE) = CAST(GETDATE() AS DATE) 
@@ -150,8 +151,8 @@ namespace Donut_Deliverable1.Controllers
             //Date used to determine when a student is considered late
             DateTime lateTime = DateTime.Parse("2012/12/12 16:00:00.000");
 
-
-            SqlConnection con = new SqlConnection("String goes here");
+            string connectionString = ConfigurationManager.ConnectionStrings["StudentData"].ConnectionString;
+            SqlConnection con = new SqlConnection(connectionString);
             //SQL Command to add students check in time
             SqlCommand checkinset = new SqlCommand(@"UPDATE [dbo].[AttendanceLog] 
                 SET checkIn = GETDATE() 
