@@ -10,6 +10,7 @@ using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 using System.IO;
 using Microsoft.Azure;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Donut_Deliverable1.Controllers
 {
@@ -32,11 +33,19 @@ namespace Donut_Deliverable1.Controllers
         }
         public IActionResult StudentView()
         {
-            string absolutepath = HttpContext.Request.Path;
-            var lastPart = absolutepath.Split('/').Last();
-            int studentId = Int32.Parse(lastPart);
-            var students = repository.GetStudent(studentId);
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                string absolutepath = HttpContext.Request.Path;
+                var lastPart = absolutepath.Split('/').Last();
+                int studentId = Int32.Parse(lastPart);
+                var students = repository.GetStudent(studentId);
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         public ActionResult GetImage()
@@ -51,11 +60,19 @@ namespace Donut_Deliverable1.Controllers
 
         public IActionResult ArchiveStudent()
         {
-            string absolutepath = HttpContext.Request.Path;
-            var lastPart = absolutepath.Split('/').Last();
-            int studentId = Int32.Parse(lastPart);
-            var students = repository.GetStudent(studentId);
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                string absolutepath = HttpContext.Request.Path;
+                var lastPart = absolutepath.Split('/').Last();
+                int studentId = Int32.Parse(lastPart);
+                var students = repository.GetStudent(studentId);
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         [HttpPost]
@@ -73,11 +90,19 @@ namespace Donut_Deliverable1.Controllers
 
         public IActionResult UnarchiveStudent()
         {
-            string absolutepath = HttpContext.Request.Path;
-            var lastPart = absolutepath.Split('/').Last();
-            int studentId = Int32.Parse(lastPart);
-            var students = repository.GetStudent(studentId);
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                string absolutepath = HttpContext.Request.Path;
+                var lastPart = absolutepath.Split('/').Last();
+                int studentId = Int32.Parse(lastPart);
+                var students = repository.GetStudent(studentId);
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         [HttpPost]
@@ -95,19 +120,43 @@ namespace Donut_Deliverable1.Controllers
 
         public IActionResult StudentSearch()
         {
-            var students = repository.Students.ToList();
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                var students = repository.Students.ToList();
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
         public IActionResult StudentSearchArchived()
         {
-            var students = repository.Students.ToList();
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                var students = repository.Students.ToList();
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         // GET: StudentController/Create
         public ActionResult Create()
         {
-            return View();
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         // POST: StudentController/Create
@@ -115,29 +164,44 @@ namespace Donut_Deliverable1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Student student, List<IFormFile> studentImage)
         {
-            foreach (var img in studentImage)
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
             {
-                using(var stream = new MemoryStream())
+                foreach (var img in studentImage)
                 {
-                    await img.CopyToAsync(stream);
-                    student.studentImage = stream.ToArray();
+                    using (var stream = new MemoryStream())
+                    {
+                        await img.CopyToAsync(stream);
+                        student.studentImage = stream.ToArray();
+                    }
+                    var blockBlob = _container.GetBlockBlobReference(img.FileName);
+                    await blockBlob.UploadFromByteArrayAsync(student.studentImage, 0, 1);
                 }
-                var blockBlob = _container.GetBlockBlobReference(img.FileName);
-                await blockBlob.UploadFromByteArrayAsync(student.studentImage, 0, 1);
+                student.archived = false;
+                context.Add(student);
+                context.SaveChanges();
+                return RedirectToAction("StudentSearch");
             }
-            student.archived = false;
-            context.Add(student);
-            context.SaveChanges();
-            return RedirectToAction("StudentSearch");
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
+
         }
 
         public ActionResult Edit()
         {
-            string absolutepath = HttpContext.Request.Path;
-            var lastPart = absolutepath.Split('/').Last();
-            int studentId = Int32.Parse(lastPart);
-            var students = repository.GetStudent(studentId);
-            return View(students);
+            if (User.IsInRole("admin") || User.IsInRole("attendance"))
+            {
+                string absolutepath = HttpContext.Request.Path;
+                var lastPart = absolutepath.Split('/').Last();
+                int studentId = Int32.Parse(lastPart);
+                var students = repository.GetStudent(studentId);
+                return View(students);
+            }
+            else
+            {
+                return Redirect("../Identity/Account/Login");
+            }
         }
 
         [HttpPost]
